@@ -15,3 +15,6 @@ class Trip:
         self.destination = destination
         self.date = date
         self.source = source
+
+    def __str__(self) -> str:
+        return f"Trip {self.id} from {self.origin} to {self.destination} on {self.date}."

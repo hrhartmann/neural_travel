@@ -18,7 +18,8 @@ from params import REGION
 app = Flask(__name__)
 
 save_to_db()
-data = get_from_db()
+# data = get_from_db()
+data = create_trips_from_csv()
 
 def db_data():      
     connection = mysql.connector.connect(**MYSQL_CONFIG)

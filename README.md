@@ -12,11 +12,13 @@ Es necesario abrir la aplicación con docker-compose.
 
 Windows:
 
+Es necesario tener un archivo .env con la clave de la base de datos. Este archivo solo requiere el la constante: DB_PASSWORD
+
 ```PS or CMD
 docker-compose up --build
 ```
 
-Es necesario tener un archivo .env con la clave de la base de datos.
+
 
 
 ## Respuestas 
@@ -58,3 +60,11 @@ El dibujo solicitado se encuentra en la carpeta diagram.
 ## Supuestos
 
 1. Se asume que todos los puntos tienen coordenadas positivas, sin embargo, es fácil adaptar el código para otros casos.
+
+## Aclaraciones
+
+Si bien existe una base de datos, y funciona, dado errores técnicos y falta de tiempo se decide usar directamente el archivo csv, pero preparado para que pueda guardar directo a base de datos y leer esos datos.
+
+Existen muchas mejoras posibles para este proyecto, se trata simplemente de una maqueta que tiene diferentes oportunidades de mejora, desde la paginación, la exposición de diferentes tipos nuevos de enpoints, personalización de parámetros, entre otros.
+
+Muchas gracias por su tiempo.

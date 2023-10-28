@@ -3,7 +3,8 @@ import mysql.connector
 
 from data_access import (
     create_trips_from_csv,
-    save_to_db
+    save_to_db,
+    get_from_db
 )
 from logic.number_of_trips import weekly_mean_by_box_and_region
 from logic.grouping import (
@@ -16,7 +17,8 @@ from params import REGION
 
 app = Flask(__name__)
 
-data = create_trips_from_csv()
+save_to_db()
+data = get_from_db()
 
 def db_data():      
     connection = mysql.connector.connect(**MYSQL_CONFIG)
@@ -25,7 +27,7 @@ def db_data():
     results = cursor.fetchall()
     cursor.close()
     connection.close()
-    return 
+    return results
 
 @app.route("/group")
 def group_page():
@@ -46,8 +48,16 @@ def weekly_avg():
 
 @app.route("/save")
 def save_to_db_from_file():
-    save_to_db(data)
-    return jsonify({"Data": save_to_db(data)})
+    return jsonify({"Data": save_to_db()})
+
+
+@app.route("/db")
+def get_db_data():
+    return jsonify({"Data": str(data)})
+
+@app.route("/any")
+def any():
+    return jsonify({"Data": str(data[3])})
 
 
 @app.route("/")
